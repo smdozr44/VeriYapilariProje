@@ -6,5 +6,5 @@ Dönem sonu projesi.
 - Hüseyin Uğurlu
 
 
-Git bağlantısı başarıyla kuruldu.
+Git bağlantısı başarıyla kuruldu...
 
