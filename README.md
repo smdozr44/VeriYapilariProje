@@ -7,3 +7,5 @@ Dönem sonu projesi.
 
 
 Git bağlantısı başarıyla kuruldu.
+
+deneme satırı
