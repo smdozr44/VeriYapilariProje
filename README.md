@@ -1,3 +1,2 @@
 # Veri Yapıları Projesi
 
-
