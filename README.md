@@ -4,3 +4,6 @@ Dönem sonu projesi.
 - Samed ÖZER
 - Ozan EROL
 - Hüseyin Uğurlu
+
+
+Git bağlantısı başarıyla kuruldu.
