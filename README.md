@@ -23,7 +23,7 @@ Bir etkinlikte asil katılımcılardan biri başvurusunu iptal ettiğinde, yedek
 | Ekip Üyesi | Görevi |
 | ---------- | ------------------------------ |
 | Samed ÖZER | Veri tabanı ve dosya işlemleri |
-| [Ad Soyad] | [Görev] |
+| Ozan EROL  | Başvuru ve yedek sistemi |
 | [Ad Soyad] | [Görev] |
 
 ## 4. Kullanılan Teknolojiler
