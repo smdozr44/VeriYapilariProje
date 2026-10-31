@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class EtkinlikIslemleri {
 
-    private static final String DOSYA = "EtkinliklerListe.txt";
+    private static final String DOSYA = "Etkinlikler_Liste.txt";
 
     // Yeni etkinlik ekleme
     public static void etkinlikEkle(Etkinlik etkinlik) {
