@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class EtkinlikIslemleri {
 
-    private static final String DOSYA = "etkinlikler.txt";
+    private static final String DOSYA = "EtkinliklerListe.txt";
 
     // Yeni etkinlik ekleme
     public static void etkinlikEkle(Etkinlik etkinlik) {
@@ -21,7 +21,7 @@ public class EtkinlikIslemleri {
                 StandardOpenOption.APPEND)) {
 
             yazici.write(
-                    etkinlik.getId() + ";" +
+                            etkinlik.getId() + ";" +
                             etkinlik.getAd() + ";" +
                             etkinlik.getTur() + ";" +
                             etkinlik.getTarih() + ";" +
