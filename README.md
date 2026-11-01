@@ -24,7 +24,7 @@ Bir etkinlikte asil katılımcılardan biri başvurusunu iptal ettiğinde, yedek
 | ---------- | ------------------------------ |
 | Samed ÖZER | Veri tabanı ve dosya işlemleri |
 | Ozan EROL  | Başvuru ve yedek sistemi |
-| Hüseyin UĞURLU | Etkinlil ve başvuru sorgulama |
+| Hüseyin UĞURLU | Etkinlik ve başvuru sorgulama |
 
 ## 4. Kullanılan Teknolojiler
 
