@@ -42,5 +42,7 @@ public class Main {
         EtkinlikIslemleri.etkinlikleriListele();
 
         scanner.close();
+
+        System.out.println("Commit push için deneme ");
     }
 }
