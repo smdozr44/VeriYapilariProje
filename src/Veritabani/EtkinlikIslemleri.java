@@ -1,85 +1,34 @@
-
 package Veritabani;
 
 import Model.Etkinlik;
-import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.*;
-import java.util.ArrayList;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class EtkinlikIslemleri {
 
-    private static final String DOSYA = "Etkinlikler_Liste.txt";
+    public void etkinlikKaydet(Etkinlik etkinlik) {
 
-    // Yeni etkinlik ekleme
-    public static void etkinlikEkle(Etkinlik etkinlik) {
+        try {
 
-        try (BufferedWriter yazici = Files.newBufferedWriter(
-                Path.of(DOSYA),
-                StandardCharsets.UTF_8,
-                StandardOpenOption.CREATE,
-                StandardOpenOption.APPEND)) {
+            FileWriter yazici = new FileWriter("etkinlikler.txt", true);
+
 
             yazici.write(
-                    etkinlik.getId() + ";" +
-                            etkinlik.getAd() + ";" +
-                            etkinlik.getTur() + ";" +
-                            etkinlik.getTarih() + ";" +
-                            etkinlik.getYer() + ";" +
-                            etkinlik.getKontenjan()
+                                   "-----ETKİNLİK BİLGİLERİ----- \n"+
+                            "Etkinlik NO: "                  + etkinlik.getId()  + "\n"+
+                            "Etkinlik İsim: "                + etkinlik.getAd() + "\n"+
+                            "Etkinlik Türü: "                 + etkinlik.getTur() + "\n"+
+                            "Etkinlik Tarihi: "              + etkinlik.getTarih() + "\n"+
+                            "Etkinlik Konum: "               + etkinlik.getYer() + "\n"+
+                            "Kontenjan: "                    + etkinlik.getKontenjan() + "\n"+
+                                   "---------------------------------- \n"
             );
 
-            yazici.newLine();
-
-            System.out.println("Etkinlik basariyla eklendi.");
+            yazici.close();
 
         } catch (IOException e) {
 
-            System.out.println("Kayit hatasi: " + e.getMessage());
-
-        }
-    }
-
-    // Etkinlikleri listeleme
-    public static void etkinlikleriListele() {
-
-        ArrayList<String> etkinlikler = new ArrayList<>();
-
-        try (BufferedReader okuyucu = Files.newBufferedReader(
-                Path.of(DOSYA), StandardCharsets.UTF_8)) {
-
-            String satir;
-
-            while ((satir = okuyucu.readLine()) != null) {
-                etkinlikler.add(satir);
-            }
-
-            if (etkinlikler.isEmpty()) {
-                System.out.println("Kayitli etkinlik bulunamadi.");
-                return;
-            }
-
-            for (String etkinlik : etkinlikler) {
-
-                String[] bilgiler = etkinlik.split(";");
-
-                System.out.println("--------------------------");
-                System.out.println("ID: " + bilgiler[0]);
-                System.out.println("Ad: " + bilgiler[1]);
-                System.out.println("Tur: " + bilgiler[2]);
-                System.out.println("Tarih: " + bilgiler[3]);
-                System.out.println("Yer: " + bilgiler[4]);
-                System.out.println("Kontenjan: " + bilgiler[5]);
-
-            }
-
-        } catch (NoSuchFileException e) {
-
-            System.out.println("Henuz etkinlik dosyasi olusturulmamis.");
-
-        } catch (IOException e) {
-
-            System.out.println("Okuma hatasi: " + e.getMessage());
+            System.out.println("Kayıt sırasında hata oluştu.");
 
         }
     }
