@@ -1,46 +1,40 @@
-
 import Model.Etkinlik;
 import Veritabani.EtkinlikIslemleri;
-
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
 
-        System.out.println("=== KAMPUS ETKINLIK YONETIM SISTEMI ===");
+        EtkinlikIslemleri islemler = new EtkinlikIslemleri();
 
         System.out.print("Etkinlik ID: ");
-        int id = scanner.nextInt();
-        scanner.nextLine();
+        int id = input.nextInt();
+        input.nextLine();
 
-        System.out.print("Etkinlik adi: ");
-        String ad = scanner.nextLine();
+        System.out.print("Etkinlik adı: ");
+        String ad = input.nextLine();
 
-        System.out.print("Etkinlik turu: ");
-        String tur = scanner.nextLine();
+        System.out.print("Etkinlik türü: ");
+        String tur = input.nextLine();
 
-        System.out.print("Etkinlik tarihi (GG-AA-YYYY): ");
-        String tarih = scanner.nextLine();
+        System.out.print("Etkinlik tarihi: ");
+        String tarih = input.nextLine();
 
         System.out.print("Etkinlik yeri: ");
-        String yer = scanner.nextLine();
+        String yer = input.nextLine();
 
         System.out.print("Kontenjan: ");
-        int kontenjan = scanner.nextInt();
+        int kontenjan = input.nextInt();
 
-        Etkinlik yeniEtkinlik = new Etkinlik(
+        Etkinlik etkinlik = new Etkinlik(
                 id, ad, tur, tarih, yer, kontenjan
         );
 
-        EtkinlikIslemleri.etkinlikEkle(yeniEtkinlik);
+        islemler.etkinlikKaydet(etkinlik);
 
-        System.out.println("\n=== KAYITLI ETKINLIKLER ===");
-
-        EtkinlikIslemleri.etkinlikleriListele();
-
-        scanner.close();
+        input.close();
     }
 }
