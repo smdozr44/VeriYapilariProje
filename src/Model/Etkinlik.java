@@ -18,7 +18,6 @@ public class Etkinlik {
         this.tarih = tarih;
         this.yer = yer;
         this.kontenjan = kontenjan;
-
     }
 
     public int getId() {
@@ -44,5 +43,4 @@ public class Etkinlik {
     public int getKontenjan() {
         return kontenjan;
     }
-
 }
