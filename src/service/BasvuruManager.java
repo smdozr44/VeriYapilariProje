@@ -3,13 +3,24 @@ package service;
 import model.Basvuru;
 import model.Etkinlik;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class BasvuruManager {
 
 
-    public Basvuru basvuruYap(int basvuruId, Etkinlik etkinlik, int katilimciId) {
-        String durum;
 
+    private ArrayList<Basvuru> tumBasvurular = new ArrayList<>();
+
+
+    public Basvuru basvuruYap(int basvuruId, Etkinlik etkinlik, int katilimciId) {
+
+
+        if (aktifBasvuruVarMi(etkinlik.getId(), katilimciId)) {
+            System.out.println("Bu katılımcı bu etkinliğe zaten başvurmuş!");
+            return null;
+        }
+
+        String durum;
 
         if (etkinlik.getAsilKayitSayisi() < etkinlik.getKontenjan()) {
             durum = "ASIL";
@@ -28,6 +39,7 @@ public class BasvuruManager {
             etkinlik.getYedekListesi().ekle(yeniBasvuru);
         }
 
+        tumBasvurular.add(yeniBasvuru);
         return yeniBasvuru;
     }
 
@@ -43,21 +55,75 @@ public class BasvuruManager {
             etkinlik.setAsilKayitSayisi(etkinlik.getAsilKayitSayisi() - 1);
 
 
-            if (!etkinlik.getYedekListesi().isEmpty()) {
-
-
-                Basvuru yeniAsil = etkinlik.getYedekListesi().cikar();
-                yeniAsil.setDurum("ASIL");
-                etkinlik.setAsilKayitSayisi(etkinlik.getAsilKayitSayisi() + 1);
-
-                System.out.println("Yedek listedeki kişi ASİL listeye alındı. Katılımcı ID: " + yeniAsil.getKatilimciId());
-            }
+            yedektenAsileAl(etkinlik);
         }
 
         else if (iptalEdilenBasvuru.getDurum().equals("YEDEK")) {
             iptalEdilenBasvuru.setDurum("IPTAL");
 
+
+
+            etkinlik.getYedekListesi().sil(iptalEdilenBasvuru.getId());
+
             System.out.println("Yedek başvurunuz iptal edildi.");
         }
+
+        else {
+            System.out.println("Bu başvuru zaten iptal edilmiş.");
+        }
+    }
+
+
+
+
+    public boolean kontenjanGuncelle(Etkinlik etkinlik, int yeniKontenjan) {
+
+        if (yeniKontenjan <= 0) {
+            System.out.println("Kontenjan 0'dan büyük olmalıdır.");
+            return false;
+        }
+
+        if (yeniKontenjan < etkinlik.getAsilKayitSayisi()) {
+            System.out.println("Kontenjan, mevcut asil katılımcı sayısının ("
+                    + etkinlik.getAsilKayitSayisi() + ") altına düşürülemez!");
+            return false;
+        }
+
+        etkinlik.setKontenjan(yeniKontenjan);
+        yedektenAsileAl(etkinlik);
+        return true;
+    }
+
+
+
+
+    private void yedektenAsileAl(Etkinlik etkinlik) {
+        while (etkinlik.getAsilKayitSayisi() < etkinlik.getKontenjan()
+                && !etkinlik.getYedekListesi().isEmpty()) {
+
+            Basvuru yeniAsil = etkinlik.getYedekListesi().cikar();
+            yeniAsil.setDurum("ASIL");
+            etkinlik.setAsilKayitSayisi(etkinlik.getAsilKayitSayisi() + 1);
+
+            System.out.println("Yedek listedeki kişi ASİL listeye alındı. Katılımcı ID: " + yeniAsil.getKatilimciId());
+        }
+    }
+
+
+    private boolean aktifBasvuruVarMi(int etkinlikId, int katilimciId) {
+        for (Basvuru b : tumBasvurular) {
+            if (b.getEtkinlikId() == etkinlikId
+                    && b.getKatilimciId() == katilimciId
+                    && !b.getDurum().equals("IPTAL")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+    public ArrayList<Basvuru> getTumBasvurular() {
+        return tumBasvurular;
     }
 }
