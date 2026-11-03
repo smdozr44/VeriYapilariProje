@@ -10,7 +10,6 @@ public class Etkinlik {
     private String yer;
     private int kontenjan;
 
-
     private int asilKayitSayisi;
     private Kuyruk yedekListesi;
 
@@ -25,10 +24,15 @@ public class Etkinlik {
         this.yedekListesi = new Kuyruk();
     }
 
-
     public int getId() { return id; }
     public String getAd() { return ad; }
+    public String getTur() { return tur; }
+    public String getTarih() { return tarih; }
+    public String getYer() { return yer; }
+
     public int getKontenjan() { return kontenjan; }
+    public void setKontenjan(int kontenjan) { this.kontenjan = kontenjan; }
+
     public int getAsilKayitSayisi() { return asilKayitSayisi; }
     public void setAsilKayitSayisi(int asilKayitSayisi) { this.asilKayitSayisi = asilKayitSayisi; }
     public Kuyruk getYedekListesi() { return yedekListesi; }
