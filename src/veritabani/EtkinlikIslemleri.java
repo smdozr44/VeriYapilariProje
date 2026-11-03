@@ -1,6 +1,6 @@
-package Veritabani;
+package veritabani;
 
-import Model.Etkinlik;
+import model.Etkinlik;
 import java.io.FileWriter;
 import java.io.IOException;
 

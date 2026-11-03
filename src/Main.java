@@ -1,5 +1,5 @@
-import Model.Etkinlik;
-import Veritabani.EtkinlikIslemleri;
+import model.Etkinlik;
+import veritabani.EtkinlikIslemleri;
 import java.util.Scanner;
 
 public class Main {
