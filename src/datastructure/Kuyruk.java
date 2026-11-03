@@ -53,4 +53,32 @@ public class Kuyruk {
     public int getBoyut() {
         return boyut;
     }
+
+
+    public boolean sil(int basvuruId) {
+        Dugum onceki = null;
+        Dugum gezgin = bas;
+
+        while (gezgin != null && gezgin.veri.getId() != basvuruId) {
+            onceki = gezgin;
+            gezgin = gezgin.sonraki;
+        }
+
+        if (gezgin == null) {
+            return false;
+        }
+
+        if (onceki == null) {
+            bas = gezgin.sonraki;
+        } else {
+            onceki.sonraki = gezgin.sonraki;
+        }
+
+        if (gezgin == son) {
+            son = onceki;
+        }
+
+        boyut--;
+        return true;
+    }
 }
