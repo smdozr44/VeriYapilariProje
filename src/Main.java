@@ -1,40 +1,22 @@
-import model.Etkinlik;
-import veritabani.EtkinlikIslemleri;
-import java.util.Scanner;
-
+import Form.formUI;
+import VeriTabani.EtkinlikDosyaIslemleri;
+import java.util.ArrayList;
 public class Main {
-
     public static void main(String[] args) {
+      formUI calistir = new formUI();
+      calistir.FormCalistir();
 
-        Scanner input = new Scanner(System.in);
+        EtkinlikDosyaIslemleri dosya = new EtkinlikDosyaIslemleri();
 
-        EtkinlikIslemleri islemler = new EtkinlikIslemleri();
+        ArrayList<String[]> etkinlikler = dosya.EtkinlikleriOku();
 
-        System.out.print("Etkinlik ID: ");
-        int id = input.nextInt();
-        input.nextLine();
+        for (String[] etkinlik : etkinlikler) {
+            for (String bilgi : etkinlik) {
+                System.out.print(bilgi + " | ");
+            }
 
-        System.out.print("Etkinlik adı: ");
-        String ad = input.nextLine();
+            System.out.println();
 
-        System.out.print("Etkinlik türü: ");
-        String tur = input.nextLine();
-
-        System.out.print("Etkinlik tarihi (GG-AA-YYYY): ");
-        String tarih = input.nextLine();
-
-        System.out.print("Etkinlik yeri: ");
-        String yer = input.nextLine();
-
-        System.out.print("Kontenjan: ");
-        int kontenjan = input.nextInt();
-
-        Etkinlik etkinlik = new Etkinlik(
-                id, ad, tur, tarih, yer, kontenjan
-        );
-
-        islemler.etkinlikKaydet(etkinlik);
-
-        input.close();
+        }
     }
 }
