@@ -7,7 +7,7 @@ public class Etkinlik {
     private String ad;
     private String tur;
     private String tarih;
-    private String yer;
+    private String konum;
     private int kontenjan;
     private String aciklama;
 
@@ -15,12 +15,12 @@ public class Etkinlik {
     private Kuyruk yedekListesi;
 
 
-    public Etkinlik(int id, String ad, String tur, String tarih, String yer, int kontenjan, String aciklama) {
+    public Etkinlik(int id, String ad, String tur, String tarih, String konum, int kontenjan, String aciklama) {
         this.id = id;
         this.ad = ad;
         this.tur = tur;
         this.tarih = tarih;
-        this.yer = yer;
+        this.konum = konum;
         this.kontenjan = kontenjan;
         this.aciklama = (aciklama == null) ? "" : aciklama;
         this.asilKayitSayisi = 0;
@@ -28,8 +28,8 @@ public class Etkinlik {
     }
 
 
-    public Etkinlik(int id, String ad, String tur, String tarih, String yer, int kontenjan) {
-        this(id, ad, tur, tarih, yer, kontenjan, "");
+    public Etkinlik(int id, String ad, String tur, String tarih, String konum, int kontenjan) {
+        this(id, ad, tur, tarih, konum, kontenjan, "");
     }
 
     public int getId() { return id; }
@@ -43,8 +43,8 @@ public class Etkinlik {
     public String getTarih() { return tarih; }
     public void setTarih(String tarih) { this.tarih = tarih; }
 
-    public String getYer() { return yer; }
-    public void setYer(String yer) { this.yer = yer; }
+    public String getKonum() { return konum; }
+    public void setKonum(String konum) { this.konum = konum; }
 
     public String getAciklama() { return aciklama; }
     public void setAciklama(String aciklama) { this.aciklama = (aciklama == null) ? "" : aciklama; }
