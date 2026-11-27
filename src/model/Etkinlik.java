@@ -46,7 +46,7 @@ public class Etkinlik {
 
     public String getAciklama() { return aciklama; }
     public void setAciklama(String aciklama) {
-        this.aciklama = (aciklama == null) ? "" : aciklama;
+        this.aciklama = (aciklama == null) ? "" : aciklama;5
     }
 
     public int getKontenjan() { return kontenjan; }
