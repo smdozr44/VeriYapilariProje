@@ -15,7 +15,9 @@ public class Etkinlik {
     private Kuyruk yedekListesi;
 
 
-    public Etkinlik(int id, String ad, String tur, String tarih, String konum, int kontenjan, String aciklama) {
+    public Etkinlik(int id, String ad, String tur, String tarih,
+                    String konum, int kontenjan, String aciklama) {
+
         this.id = id;
         this.ad = ad;
         this.tur = tur;
@@ -27,10 +29,6 @@ public class Etkinlik {
         this.yedekListesi = new Kuyruk();
     }
 
-
-    public Etkinlik(int id, String ad, String tur, String tarih, String konum, int kontenjan) {
-        this(id, ad, tur, tarih, konum, kontenjan, "");
-    }
 
     public int getId() { return id; }
 
@@ -47,13 +45,17 @@ public class Etkinlik {
     public void setKonum(String konum) { this.konum = konum; }
 
     public String getAciklama() { return aciklama; }
-    public void setAciklama(String aciklama) { this.aciklama = (aciklama == null) ? "" : aciklama; }
+    public void setAciklama(String aciklama) {
+        this.aciklama = (aciklama == null) ? "" : aciklama;
+    }
 
     public int getKontenjan() { return kontenjan; }
     public void setKontenjan(int kontenjan) { this.kontenjan = kontenjan; }
 
     public int getAsilKayitSayisi() { return asilKayitSayisi; }
-    public void setAsilKayitSayisi(int asilKayitSayisi) { this.asilKayitSayisi = asilKayitSayisi; }
+    public void setAsilKayitSayisi(int asilKayitSayisi) {
+        this.asilKayitSayisi = asilKayitSayisi;
+    }
 
     public Kuyruk getYedekListesi() { return yedekListesi; }
 }
